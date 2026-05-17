@@ -1,119 +1,265 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to CodiFy v1.2 Alpha</title>
-    <link rel="icon" href="Vintage Colorful Retro Vibes Typographic Product Brand Logo (6).png" type="image/png">
+    <title>CodiFy (CF) - Início</title>
     <style>
         :root {
-            --bg: #1e1e1e;
-            --accent: #0e639c;
-            --accent-hover: #1177bb;
+            --bg-gradient: radial-gradient(circle at top right, #0b1528, #030712);
+            --panel-bg: rgba(15, 23, 42, 0.6);
+            --border-glow: rgba(56, 189, 248, 0.2);
+            --accent-blue: #38bdf8;
+            --electric-blue: #2563eb;
+            --text-main: #f8fafc;
         }
 
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        .welcome-container {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1e1e1e 0%, #0e639c 100%);
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
+            top: 5%;
+            left: 10%;
+            z-index: 0;
+        }
+
+        .main-card {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3.5rem;
+            max-width: 1250px;
+            width: 92%;
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8),
+                        0 0 50px -10px rgba(37, 99, 235, 0.15);
+        }
+
+        .branding-side {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+        }
+
+        .version-tag {
+            align-self: flex-start;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .brand-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 30%, #38bdf8 100%);
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-description {
+            font-size: 1.05rem;
+            color: #94a3b8;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        .logo-area {
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin: 0;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            letter-spacing: -1px;
-        }
-
-        p {
-            font-size: clamp(1rem, 4vw, 1.2rem);
-            color: #d1d1d1;
-            max-width: 600px;
-            margin: 15px 0 40px 0;
-            line-height: 1.6;
-        }
-
-        .btn-start {
-            background: white;
-            color: var(--accent);
-            border: none;
-            padding: clamp(12px, 3vw, 18px) clamp(30px, 8vw, 50px);
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            font-weight: bold;
-            border-radius: 50px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
+            border: none;
         }
 
-        .btn-start:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
-            background: #f8f8f8;
+        .btn-filled {
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
         }
 
-        .btn-start:active {
-            transform: translateY(0) scale(0.98);
+        .btn-filled:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(37, 99, 235, 0.6);
+            filter: brightness(1.1);
         }
 
-        .footer-info {
-            position: absolute;
-            bottom: 30px;
+        .ide-frame {
+            background: #020617;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .ide-topbar {
+            background: #0b1329;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .mac-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .ide-tab {
+            color: var(--accent-blue);
+            font-family: monospace;
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.6);
-            letter-spacing: 1px;
+            background: #020617;
+            padding: 0.4rem 1rem;
+            border-radius: 6px 6px 0 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: none;
+            margin-bottom: -1rem;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .ide-content {
+            padding: 2rem;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+            overflow-x: auto;
         }
 
-        /* Ajuste para notebooks fracos (remove desfoques pesados se houvesse) */
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
+        .keyword { color: #f43f5e; font-weight: bold; }
+        .native { color: #fbbf24; }
+        .string { color: #34d399; }
+        .var-format { color: #a78bfa; }
+        .boolean { color: #38bdf8; }
+        
+        .line-number {
+            color: #334155;
+            margin-right: 1.2rem;
+            display: inline-block;
+            width: 20px;
+            text-align: right;
+            user-select: none;
+        }
+
+        .pulse-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 15px;
+            background: var(--accent-blue);
+            margin-left: 2px;
+            animation: pulse 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse {
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 1024px) {
+            .main-card {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                padding: 2.5rem;
+            }
+            body { overflow-y: auto; padding: 2rem 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="welcome-container">
-        <div class="logo-area">
-            <h1>CF v1.2 Alpha</h1>
-            <p>Your new favorite programming language, as simple as Python, as powerful as JavaScript.</p>
-        </div>
-
-        <!-- Altere o href para o nome do seu arquivo principal da IDE -->
-        <a href="https://ytkapadoola.github.io/CodiFy/" class="btn-start">Boot CodiFy</a>
-
-        <div class="footer-info">
-            POWERED BY JSCF ENGINE
+<div class="main-card">
+    <div class="branding-side">
+        <div class="version-tag">v1.0 Beta</div>
+        <h1 class="brand-title">CodiFy</h1>
+        <p class="brand-description">Write clean, intuitive, and high-performance code. See a practical example on the side using the native structure of the CF language.</p>
+        
+        <div class="action-row">
+            <a href="https://ytkapadoola.github.io/CodiFy/" class="btn btn-filled">Start Now</a>
         </div>
     </div>
+    <div class="ide-frame">
+        <div class="ide-topbar">
+            <div class="window-controls">
+                <div class="mac-dot" style="background: #ef4444;"></div>
+                <div class="mac-dot" style="background: #eab308;"></div>
+                <div class="mac-dot" style="background: #22c55e;"></div>
+            </div>
+            <div class="ide-tab">exemplo_calculadora.cf</div>
+            <div style="width: 50px;"></div>
+        </div>
+        
+        <div class="ide-content">
+            <div><span class="line-number">1</span><span class="keyword">repeat</span> <span class="boolean">True</span>:</div>
+            <div><span class="line-number">2</span>&nbsp;&nbsp;&nbsp;&nbsp;num1 = <span class="native">int</span>(<span class="native">put</span>(<span class="string">"Enter the first number: "</span>))</div>
+            <div><span class="line-number">3</span>&nbsp;&nbsp;&nbsp;&nbsp;num2 = <span class="native">int</span>(<span class="native">put</span>(<span class="string">"Enter the second number: "</span>))</div>
+            <div><span class="line-number">4</span>&nbsp;&nbsp;&nbsp;&nbsp;operation = <span class="native">put</span>(<span class="string">"Enter the operation: "</span>)</div>
+            <div><span class="line-number">5</span></div>
+            <div><span class="line-number">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">match</span> operation:</div>
+            <div><span class="line-number">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"+"</span>:</div>
+            <div><span class="line-number">8</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="native">display</span>(<span class="var-format">v"{num1} + {num2} = {num1 + num2}"</span>)</div>
+            <div><span class="line-number">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"-"</span>:</div>
+            <div><span class="line-number">10</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="native">display</span>(<span class="var-format">v"{num1} - {num2} = {num1 - num2}"</span>)</div>
+            <div><span class="line-number">11</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"*"</span>:</div>
+            <div><span class="line-number">12</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="native">display</span>(<span class="var-format">v"{num1} * {num2} = {num1 * num2}"</span>)</div>
+            <div><span class="line-number">13</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">case</span> <span class="string">"/"</span>:</div>
+            <div><span class="line-number">14</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">if</span> num2 == 0:</div>
+            <div><span class="line-number">15</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="native">display</span>(<span class="string">"Error: Operation by zero."</span>)</div>
+            <div><span class="line-number">16</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">else</span>:</div>
+            <div><span class="line-number">17</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="native">display</span>(<span class="var-format">v"{num1} / {num2} = {num1 // num2}"</span>)<span class="pulse-cursor"></span></div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
